@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;1,400&display=swap");
+
+$text-color: #606c38;
+$background: white;
+
+@mixin backgroundImage($imgpath, $position: 0% 0%, $repeat: no-repeat) {
+  background: transparent url(#{$imgpath}) $repeat $position;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 100%;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 0 0 80px;
+
+    & ul {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      padding: 0;
+      width: 450px;
+
+      li {
+        color: $text-color;
+      }
+
+      li button {
+          cursor: pointer;
+      }
+    }
+  }
+
+  &-flags {
+    background: $background;
+    border: none;
+
+    img {
+      width: 30px;
+    }
+  }
+}
+
+.langs-dropdown {
+  display: none;
+  position: absolute;
+  background-color: $background;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  a {
+      display: block;
+      width: 10px;
+  }
+}
+
+.show {
+    display: block;
+    background: transparent;
+}
+
+
+.main-content {
+  @include backgroundImage("../assets/img/hero-image.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 480px;
+
+  & h1 {
+    color: $text-color;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+  }
+
+  & p {
+    font-size: 32px;
+    color: $text-color;
+  }
+
+  &__order {
+    color: black;
+    cursor: pointer;
+    width: 120px;
+    height: 35px;
+    border-radius: 25px;
+    background-color: $text-color;
+  }
+}
+
+.about {
+  margin: 100px, 0;
+  &-title {
+    color: $text-color;
+    font-size: 24px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  &-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 15px;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        text-align: center;
+        color: $text-color;
+        font-weight: 300;
+        font-size: 18px;
+      }
+    }
+
+    & img {
+      width: 50%;
+    }
+  }
+}
+
+.faq {
+  margin: 100px, 0;
+
+  &-title {
+    color: $text-color;
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  &-accordion {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    margin: 0;
+    width: 80%;
+
+    &__option {
+      background-color: $background;
+      color: black;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      width: 80%;
+      border: 1px solid $text-color;
+      border-radius: 25px;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      margin: 10px;
+
+      button {
+        border: none;
+        background-color: $background;
+        color: $text-color;
+        font-size: 18px;
+      }
+
+      img {
+        color: $text-color;
+      }
+    }
+
+    &__text {
+      padding: 0px 20px;
+      display: none;
+      background-color: $background;
+      overflow: hidden;
+      width: 80%;
+    }
+  }
+}
+
+.footer {
+  padding: 40px 0;
+  background-color: $background;
+  color: $text-color;
+
+  &-social {
+    text-align: center;
+    padding-bottom: 25px;
+
+    & > a {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin: 0 8px;
+      color: inherit;
+      opacity: 0.75;
+    }
+  }
+
+  &-copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 22px;
+    color: $text-color;
+    margin-bottom: 0;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: grid;
+}
+
+.modal {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  place-items: center;
+  z-index: 3;
+
+  &-content {
+    background: $background;
+    width: 45%;
+    height: 20%;
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+
+      h1 {
+        color: $text-color;
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      p {
+        text-align: center;
+        color: $text-color;
+      }
+
+      input {
+        width: 220px;
+        height: 25px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        padding: 5px;
+      }
+
+      button {
+        width: 130px;
+        height: 25px;
+        border-radius: 10px;
+      }
+    }
+
+    &__img {
+      width: 25%;
+      height: 25%;
+      object-fit: contain;
+    }
+
+    &__close {
+      cursor: pointer;
+    }
+  }
+}
